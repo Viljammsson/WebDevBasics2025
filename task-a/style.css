@@ -1,0 +1,17 @@
+/*
+Author: Viljami Myllyvirta
+Date: 2025-09-19
+*/
+
+body {
+    background-color: linear-gradient(45deg,#a66f2e,#f3d5ad);
+}
+
+h1 {
+   font-size: large;
+   color: aliceblue; 
+}
+
+p {
+color: aliceblue;
+}
