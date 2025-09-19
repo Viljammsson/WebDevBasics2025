@@ -6,13 +6,16 @@ Date: 2025-09-19
 body {
    background: #A66F2E;
     background: radial-gradient(circle,rgba(166, 111, 46, 1) 75%, rgba(0, 0, 0, 1) 100%);
+    margin: auto;
 }
 
 h1 {
    font-size: 3em;
-   color: aliceblue; 
+   color: aliceblue;
+   margin: auto; 
 }
 
 p {
 color: aliceblue;
+margin: auto;
 }
