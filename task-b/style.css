@@ -1,0 +1,53 @@
+/*
+Author: Viljami Myllyvirta
+Date: 2025-09-22
+*/
+
+body {
+   background: linear-gradient(to bottom, #A66F2E 0%, #f3d5ad 100%) ;
+    display: flex;
+    flex-direction: column; /* asettaa tekstit päällekkäin */
+    justify-content: center; /* keskittää pystysuunnassa */
+    align-items: center; /* keskittää vaakasuunnassa */
+    min-height: 100vh; /*selaimen korkeus*/
+    margin: 0;
+}
+
+h1 {
+   font-size: 4em;
+   color: aliceblue;
+    margin: 12px 0;
+}
+
+p {
+color: aliceblue;
+margin: 12px 0;
+}
+
+ul {
+    list-style-type: square;
+    color: aliceblue;
+    padding: 20px;
+    margin: 5px;
+}
+
+ol {
+    list-style-type: square;
+    color: aliceblue;
+}
+
+a:hover, a:active {
+    color:  aliceblue;
+    text-decoration: none;
+}
+
+a:link, a:visited {
+  background-color: #000000;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px, 2px;
+}
