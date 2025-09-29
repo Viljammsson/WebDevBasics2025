@@ -13,10 +13,11 @@ body {
     margin: 0;
 }
 
-h1 {
-   font-size: 4em;
+h1.titles, h3, h2 {
+   font-size: 2.5em;
    color: aliceblue;
     margin: 12px 0;
+    font-family: 'Spectral', serif;
 }
 
 p {
@@ -24,12 +25,14 @@ color: aliceblue;
 margin: 12px 0;
 }
 
+
 #special-message
 {
-margin: 20px;
+margin: 30px;
 align-items: center;
 color: aliceblue;
-font-size: xx-large;
+font-size: 1.5em;
+font-family: 'Spectral', serif;
 }
 
 img {
