@@ -103,3 +103,10 @@ a {
 {
     font-size: 1.9em;
 }
+
+a[target] {
+    font-size: x-large;
+    color: rgb(132, 0, 255);
+    font-family: 'Spectral', serif;
+    text-decoration: underline;
+}
