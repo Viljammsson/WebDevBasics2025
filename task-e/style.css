@@ -117,7 +117,7 @@ body {
 */
 .table thead th:nth-child(1),
 .table tbody td:nth-child(1) {
-  width: 40%;
+  width: 15%;
 }
 .table thead th:nth-child(n+2),
 .table tbody td:nth-child(n+2) {
