@@ -89,6 +89,7 @@ body {
   width: 100%;                           /* % */
   border-collapse: collapse;
   font-size: 1rem;                       /* rem */
+  table-layout: fixed;
 }
 
 /* Header cells */
