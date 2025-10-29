@@ -53,8 +53,8 @@ body {
 
 /* Left & right empty space 15% (content width ~70%) */
 .content {
-  margin-left: 15%;                      /* % */
-  margin-right: 15%;                     /* % */
+  margin-left: 16.6667%;                      /* % */
+  margin-right: 16.6667%;                     /* % */
   padding-top: 1rem;                     /* rem */
   padding-bottom: 2rem;                  /* rem */
 }
