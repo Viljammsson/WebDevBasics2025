@@ -6,7 +6,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const CHECK = '✅';
   const CROSS = '❌';
-  const dayOrder = ["Fri", "Mon"];
+  const dayOrder = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
   const form = document.getElementById("addCourseForm");
   const table = document.getElementById("timetable").querySelector("tbody");
