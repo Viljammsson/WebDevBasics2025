@@ -1,50 +1,164 @@
 // index.js
 // Author: Viljami Myllyvirta
 // Date: 2025-10-30
-// Handles adding new course rows with day marks (✅/❌)
+// Handles the js
+
+"use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const CHECK = '✅';
-  const CROSS = '❌';
-  const dayOrder = ["Fri", "Mon"];
+  // 1) Fetch the most important elements
+  const form = document.getElementById("fullForm");
+  const tbody = document.querySelector("#timetable tbody");
 
-  const form = document.getElementById("addCourseForm");
-  const table = document.getElementById("timetable").querySelector("tbody");
-  const courseInput = document.getElementById("courseName");
+  const nameInput = document.getElementById("Name");
+  const emailInput = document.getElementById("Email");
+  const telInput = document.getElementById("Tel");
+  const birthInput = document.getElementById("birthDate");
+  const termsInput = document.getElementById("terms");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  // Error code messages
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const telError = document.getElementById("telError");
+  const birthError = document.getElementById("birthError");
+  const termsError = document.getElementById("termsError");
 
-    const courseName = courseInput.value.trim();
-    if (!courseName) return;
+  // 2) more functions
+  const setError = (el, msg) => (el.textContent = msg || "");
+  const isFutureDate = (yyyyMmDd) => {
+    if (!yyyyMmDd) return false;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const d = new Date(yyyyMmDd + "T00:00:00");
+    return d > today;
+  };
 
-    // Collect checked days into a Set
-    const checkedDays = new Set(
-      Array.from(form.querySelectorAll('input[name="day"]:checked'))
-        .map((cb) => cb.value)
-    );
+  const calcAge = (yyyyMmDd) => {
+    if (!yyyyMmDd) return 0;
+    const now = new Date();
+    const b = new Date(yyyyMmDd + "T00:00:00");
+    let age = now.getFullYear() - b.getFullYear();
+    const m = now.getMonth() - b.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < b.getDate())) age--;
+    return age;
+  };
 
-    // Create new table row
-    const row = document.createElement("tr");
+  const telLooksOk = (str) => {
+    const digits = (str || "").replace(/\D/g, "");
+    return /^\+?[\d\s\-()]{7,25}$/.test(str) && digits.length >= 7 && digits.length <= 20;
 
-    // Course cell
-    const nameCell = document.createElement("td");
-    nameCell.textContent = courseName;
-    row.appendChild(nameCell);
+    //regex and i hate it
+  };
 
-    // Day cells
-    dayOrder.forEach((day) => {
-      const cell = document.createElement("td");
-      cell.textContent = checkedDays.has(day) ? CHECK : CROSS;
-      cell.dataset.day = day;
-      cell.className = "day-cell";
-      row.appendChild(cell);
+  // 3) Validate?
+  const validate = () => {
+    let ok = true;
+
+    // Nimi
+    if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
+      setError(nameError, "Name needs to be atleast 2 letters long.");
+      ok = false;
+    } else {
+      setError(nameError, "");
+    }
+
+    // Email Validation
+    if (!emailInput.value.trim() || !emailInput.checkValidity()) {
+      setError(emailError, "Enter an Email-address");
+      ok = false;
+    } else {
+      setError(emailError, "");
+    }
+
+    // Telephone
+    if (!telLooksOk(telInput.value.trim())) {
+      setError(telError, "Give a real tel. number (esim. +358 401234567).");
+      ok = false;
+    } else {
+      setError(telError, "");
+    }
+
+    // Birthdate
+    const b = birthInput.value;
+    if (!b) {
+      setError(birthError, "Pick a birth date.");
+      ok = false;
+    } else if (isFutureDate(b)) {
+      setError(birthError, "Birth date cant be in future.");
+      ok = false;
+    } else if (calcAge(b) < 15) {
+      setError(birthError, "Age restricted +15");
+      ok = false;
+    } else {
+      setError(birthError, "");
+    }
+
+    // Terms
+    if (!termsInput.checked) {
+      setError(termsError, "Accept the terms and conditions.");
+      ok = false;
+    } else {
+      setError(termsError, "");
+    }
+
+    return ok;
+  };
+
+  // 4) Add row function
+  const addRow = ({ name, email, tel, birth, terms }) => {
+    const tr = document.createElement("tr");
+
+    const cells = [
+      new Date().toISOString(), // Timestamp ISO-Format
+      name,
+      email,
+      tel,
+      birth,                    // yyyy-mm-dd
+      terms ? "Yes" : "No",
+    ];
+
+    cells.forEach((text) => {
+      const td = document.createElement("td");
+      td.textContent = text;
+      tr.appendChild(td);
     });
 
-    table.appendChild(row);
+    tbody.appendChild(tr);
+  };
 
-    // Reset form and focus
+  // 5) Event listener submit
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const ok = validate();
+    if (!ok) {
+      // Focus only for one error at a time
+      if (nameError.textContent) nameInput.focus();
+      else if (emailError.textContent) emailInput.focus();
+      else if (telError.textContent) telInput.focus();
+      else if (birthError.textContent) birthInput.focus();
+      else if (termsError.textContent) termsInput.focus();
+      return;
+    }
+
+    // allfine add the row
+    addRow({
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      tel: telInput.value.trim(),
+      birth: birthInput.value,         // yyyy-mm-dd
+      terms: termsInput.checked,
+    });
+
+    // Reset and focus on the first row
     form.reset();
-    courseInput.focus();
+    nameInput.focus();
+  });
+
+  // 6) Reset errors also
+  form.addEventListener("reset", () => {
+    [nameError, emailError, telError, birthError, termsError].forEach((el) => setError(el, ""));
   });
 });
+
+

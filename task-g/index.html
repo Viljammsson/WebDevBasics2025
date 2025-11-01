@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Weekly Timetable</title>
   <link rel="stylesheet" href="style.css">
-  <script src="index.js"></script>
+  <script src="index.js" defer></script>
 </head>
 
 <body>
@@ -25,25 +24,47 @@
       <!-- Student info (30%) -->
       <section class="student-info" aria-label="Student information">
         <h2 class="student-info-title">Information</h2>
-        <p><span class="student-name">Your Name</span></p>
-        <p><span class="student-group">Group number</span></p>
+        <p><span class="student-name">Viljami Myllyvirta</span></p>
+        <p><span class="student-group">NTIS24K</span></p>
       </section>
 
       <!-- Controls (70%): add course + day marks -->
       <section class="controls" aria-label="Add course row">
-        <h2 class="controls-title">Add Course</h2>
+        <h2 class="controls-title">Information</h2>
 
-        <form id="addCourseForm">
+        <form id="fullForm">
+          <!-- Name -->
           <div class="form-row">
-            <label for="courseName">Course name</label>
-            <input id="courseName" name="courseName" type="text" required placeholder="e.g., Web Development Basics">
+            <label for="Name">Name</label>
+            <input id="Name" name="Name" type="text" required placeholder="e.g., Kasane Teto">
           </div>
+          <p class="error" id="nameError"></p>
 
-          <fieldset class="days-group">
-            <legend>Days (yes = &#9989;, no = &#10060;)</legend>
-            <label><input type="checkbox" name="day" value="Tue"> Tue</label>
-            <label><input type="checkbox" name="day" value="Thu"> Thu</label>
-          </fieldset>
+          <!-- Email -->
+          <div class="form-row">
+            <label for="Email">Email</label>
+            <input id="Email" name="Email" type="email" required placeholder="e.g., KasaneTeto@gmail.com">
+          </div>
+          <p class="error" id="emailError"></p>
+          
+          <!-- Tel -->
+          <div class="form-row">
+            <label for="Tel">Tel</label>
+            <input id="Tel" name="Tel" type="text" required placeholder="e.g., +358 401506233">
+          </div>
+          <p class="error" id="telError"></p>
+          <!-- Birth -->
+          <div class="form-row">
+            <label for="birthDate">Birth Date</label>
+            <input id="birthDate" name="birthDate" type="date" required>
+          </div>
+          <p class="error" id="birthError"></p>
+
+          <!-- Terms -->
+          <div class="form-row">
+            <label><input id="terms" name="terms" type="checkbox"> I accept the terms and conditions</label>
+          </div>
+          <p class="error" id="termsError"></p>
 
           <div class="form-row">
             <button id="addRowBtn" type="submit" class="btn">Add row</button>
@@ -58,9 +79,12 @@
       <table class="table" id="timetable">
         <thead>
           <tr>
-            <th>Course</th>
-            <th>Tue</th>
-            <th>Fri</th>
+            <th>Timestamp</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Birth Date</th>
+            <th>Terms accepted</th>
           </tr>
         </thead>
         <tbody>

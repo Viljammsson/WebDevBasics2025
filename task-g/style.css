@@ -105,7 +105,7 @@ body {
   margin: 0.5rem 0;
 }
 
-.form-row input[type="text"] {
+.form-row input:not([type="checkbox"]) {
   flex: 1 1 auto;
   padding: 0.45rem 0.6rem;
   border: 1px solid var(--border);
