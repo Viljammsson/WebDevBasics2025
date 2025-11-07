@@ -54,13 +54,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const validate = () => {
     let ok = true;
 
-    // Nimi
+    // Name validation
     if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
       setError(nameError, "Name needs to be atleast 2 letters long.");
       ok = false;
     } else {
       setError(nameError, "");
     }
+
+
+
 
     // Email Validation
     if (!emailInput.value.trim() || !emailInput.checkValidity()) {
@@ -103,6 +106,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return ok;
   };
+
+  // Realtime name validation?
+  nameInput.addEventListener("input", () => {
+    const val = nameInput.value.trim();
+    if (val.length < 2) {
+      setError(nameError, "Name needs to be at least 2 letters long.");
+    } else {
+      setError(nameError, "");
+    }
+  });
+
+  emailInput.addEventListener("input", validate);
+  telInput.addEventListener("input", validate);
+  birthInput.addEventListener("change", validate);
+  termsInput.addEventListener("change", validate);
 
   // 4) Add row function
   const addRow = ({ name, email, tel, birth, terms }) => {
