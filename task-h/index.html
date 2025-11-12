@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Registration page</title>
+  <!--
+    Author: Viljami Myllyvirta
+    Date: 2025-11-12
+  -->
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // tailwind using CDN
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#A66F2E',
+            pageBg: 'aliceblue',
+            tableAlt: 'aliceblue',
+          },
+          borderRadius: {
+            DEFAULT: '8px',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- JS-tiedosto -->
+  <script src="index.js" defer></script>
+</head>
+
+<body class="min-h-screen bg-pageBg text-[#2a2a2a] font-sans text-base">
+
+  <!-- Header -->
+  <header class="bg-brand text-white py-8 text-center shadow-sm">
+    <h1 class="text-2xl font-semibold">Registration page</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="mx-[15%] py-4 md:mx-[5%] sm:mx-[1%]">
+    <div class="flex gap-4 mb-4 max-[860px]:flex-col">
+      <!-- Student info -->
+      <section class="flex-1 bg-white border border-border rounded-lg shadow-sm p-4 max-[860px]:w-full"
+        aria-label="Student information">
+        <h2 class="text-lg font-semibold mb-2">Information</h2>
+        <p class="m-0">Viljami Myllyvirta</p>
+        <p class="mt-2">NTIS24K</p>
+      </section>
+
+      <!-- Controls -->
+      <section class="flex-[2] bg-white border border-border rounded-lg shadow-sm p-4 max-[860px]:w-full"
+        aria-label="Add course row">
+        <h2 class="text-lg font-semibold mb-2">Information</h2>
+
+        <form id="fullForm" class="space-y-2">
+          <!-- Name -->
+          <div class="flex items-center gap-2">
+            <label for="Name" class="w-28">Name</label>
+            <input id="Name" name="Name" type="text" required placeholder="e.g., Kasane Teto"
+              class="flex-1 border border-border rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-brand" />
+          </div>
+          <p class="text-red-600 text-sm" id="nameError"></p>
+
+          <!-- Email -->
+          <div class="flex items-center gap-2">
+            <label for="Email" class="w-28">Email</label>
+            <input id="Email" name="Email" type="email" required placeholder="e.g., KasaneTeto@gmail.com"
+              class="flex-1 border border-border rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-brand" />
+          </div>
+          <p class="text-red-600 text-sm" id="emailError"></p>
+
+          <!-- Tel -->
+          <div class="flex items-center gap-2">
+            <label for="Tel" class="w-28">Tel</label>
+            <input id="Tel" name="Tel" type="text" required placeholder="e.g., +358 401506233"
+              class="flex-1 border border-border rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-brand" />
+          </div>
+          <p class="text-red-600 text-sm" id="telError"></p>
+
+          <!-- Birth -->
+          <div class="flex items-center gap-2">
+            <label for="birthDate" class="w-28">Birth Date</label>
+            <input id="birthDate" name="birthDate" type="date" required
+              class="flex-1 border border-border rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-brand" />
+          </div>
+          <p class="text-red-600 text-sm" id="birthError"></p>
+
+          <!-- Terms -->
+          <div class="flex items-center gap-2">
+            <label class="flex items-center gap-2">
+              <input id="terms" name="terms" type="checkbox" />
+              I accept the terms and conditions
+            </label>
+          </div>
+          <p class="text-red-600 text-sm" id="termsError"></p>
+
+          <!-- Buttons -->
+          <div class="flex gap-2">
+            <button type="submit" id="addRowBtn"
+              class="border border-border rounded-md bg-slate-50 hover:bg-slate-100 px-3 py-1 cursor-pointer">Add
+              row</button>
+            <button type="reset" id="clearBtn"
+              class="border border-border rounded-md bg-white hover:bg-slate-50 px-3 py-1 cursor-pointer">Clear</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white border border-border rounded-lg shadow-md p-4 overflow-x-auto">
+      <table class="w-full border-collapse text-base" id="timetable">
+        <thead>
+          <tr class="bg-brand text-white text-left">
+            <th class="p-3 border-b border-border w-[40%]">Timestamp</th>
+            <th class="p-3 border-b border-border text-center w-[12%]">Name</th>
+            <th class="p-3 border-b border-border text-center w-[12%]">Email</th>
+            <th class="p-3 border-b border-border text-center w-[12%]">Telephone</th>
+            <th class="p-3 border-b border-border text-center w-[12%]">Birth Date</th>
+            <th class="p-3 border-b border-border text-center w-[12%]">Terms accepted</th>
+          </tr>
+        </thead>
+        <tbody class="[&>tr:nth-child(even)]:bg-tableAlt"></tbody>
+      </table>
+    </div>
+  </main>
+</body>
+
+</html>
