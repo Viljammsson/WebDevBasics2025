@@ -56,7 +56,7 @@
         aria-label="Add course row">
         <h2 class="text-lg font-semibold mb-2">Information</h2>
 
-        <form id="fullForm" class="space-y-2">
+        <form id="fullForm" class="space-y-2" novalidate>
           <!-- Name -->
           <div class="flex items-center gap-2">
             <label for="Name" class="w-28">Name</label>
@@ -112,7 +112,7 @@
 
     <!-- Table -->
     <div class="bg-white border border-border rounded-lg shadow-md p-4 overflow-x-auto">
-      <table class="w-full border-collapse text-base" id="timetable">
+     <table class="w-full border-collapse table-fixed text-base text-sm md:text-base" id="timetable">
         <thead>
           <tr class="bg-brand text-white text-left">
             <th class="p-3 border-b border-border w-[40%]">Timestamp</th>

@@ -122,27 +122,33 @@ document.addEventListener("DOMContentLoaded", () => {
   birthInput.addEventListener("change", validate);
   termsInput.addEventListener("change", validate);
 
-  // 4) Add row function
-  const addRow = ({ name, email, tel, birth, terms }) => {
-    const tr = document.createElement("tr");
+const addRow = ({ name, email, tel, birth, terms }) => {
+  const tr = document.createElement("tr");
 
-    const cells = [
-      new Date().toISOString(), // Timestamp ISO-Format
-      name,
-      email,
-      tel,
-      birth,                    // yyyy-mm-dd
-      terms ? "Yes" : "No",
-    ];
+  // create the date
+  const now = new Date();
+  const timestamp = now.toISOString().slice(0, 16).replace("T", " ");
 
-    cells.forEach((text) => {
-      const td = document.createElement("td");
-      td.textContent = text;
-      tr.appendChild(td);
-    });
+  const cells = [
+    timestamp, // fixed timestamp
+    name,
+    email,
+    tel,
+    birth,
+    terms ? "Yes" : "No",
+  ];
 
-    tbody.appendChild(tr);
-  };
+  cells.forEach((text, i) => {
+    const td = document.createElement("td");
+    td.textContent = text;
+    td.className = "p-3 border-b border-border";
+    if (i > 0) td.classList.add("text-center");
+    tr.appendChild(td);
+  });
+
+  tbody.appendChild(tr);
+};
+
 
   // 5) Event listener submit
   form.addEventListener("submit", (e) => {
