@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GPUStack — The smart way to access high-end GPUs</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title">GPUStack</h1>
+      <nav aria-label="Main navigation" class="main-nav">
+        <ul>
+          <li><a href="#rentals">Rent a GPU</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="hero-sub">High-performance GPUs for gaming, rendering, AI and compute — rent hourly, daily or weekly.</p>
+  </header>
+
+  <main>
+    <section id="rentals" class="container cards-section">
+      <h2>Available Graphics Cards</h2>
+      <p class="lead">Choose the performance you need — all GPUs are tested and ready to use.</p>
+
+      <div class="card-grid" role="list">
+        <!-- GPU 1 -->
+        <article class="card" role="listitem">
+          <figure>
+            <img src="images/9070.jpg" alt="AMD Radeon RX 9070 XT" />
+            <figcaption>AMD Radeon RX 9070 XT — 16 GB GDDR6</figcaption>
+          </figure>
+          <div class="card-body">
+            <h3>RX 9070 XT</h3>
+            <p class="specs">12 GB · 4608 Cores / 160 TMUS · 2.6 GHz boost</p>
+            <p class="price">From <strong>€8 / hour</strong></p>
+            <a class="btn" href="#contact">Rent now</a>
+          </div>
+        </article>
+
+        <!-- GPU 2 -->
+        <article class="card" role="listitem">
+          <figure>
+            <img src="images/5070.jpg" alt="Nvidia RTX 5070" />
+            <figcaption>Nvidia RTX 5070 — 24 GB GDDR6X</figcaption>
+          </figure>
+          <div class="card-body">
+            <h3>RTX 5070</h3>
+            <p class="specs">24 GB · 6144 Cores / 1005 Tensor · 2.6 GHz boost</p>
+            <p class="price">From <strong>€15 / hour</strong></p>
+            <a class="btn btn-primary" href="#contact">Rent now</a>
+          </div>
+        </article>
+
+        <!-- GPU 3 -->
+        <article class="card" role="listitem">
+          <figure>
+            <img src="images/b580.jpg" alt="Graphics card Model Z" />
+            <figcaption>Intel B580 — 12 GB GDDR6</figcaption>
+          </figure>
+          <div class="card-body">
+            <h3>B580</h3>
+            <p class="specs">12 GB · 20 XE-Core / 20 RT Cores · 2.7 GHz boost</p>
+            <p class="price">From <strong>€5 / hour</strong></p>
+            <a class="btn" href="#contact">Rent now</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" class="container info-section">
+      <h2>Pricing & Terms</h2>
+
+      <h3>Rental Periods</h3>
+      <ul>
+        <li>Hourly: pay per hour of usage</li>
+        <li>Daily: 24-hour access</li>
+        <li>Weekly: discounted rate for long-term usage</li>
+      </ul>
+
+      <h3>Payments & Guarantees</h3>
+      <p>A valid credit card is required to confirm your reservation. A security guarantee applies for safe operation of all rented hardware — details provided during the booking process.</p>
+    </section>
+
+    <section id="contact" class="container contact-section">
+      <h2>Contact Us</h2>
+      <p>Send us a message — we reply quickly.</p>
+
+      <form class="contact-form" action="#" method="post" aria-label="Booking form">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="message">Message / Booking request</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> GPUStack — All rights reserved.</p>
+      <p class="small">Privacy Policy | Terms of Service</p>
+    </div>
+  </footer>
+
+  <script>
+    // Set dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+:root {
+    /* Trendikäs, mut hillitty paletti (dark mode friendly) */
+    --bg: #0f1724;
+    /* syvä öinen tausta */
+    --card: rgba(255, 255, 255, 0.04);
+    --glass: rgba(255, 255, 255, 0.06);
+    --muted: #c7d2df;
+    --accent: #7c5cff;
+    /* violetin sininen — moderni ja tekninen */
+    --accent-2: #00d4ff;
+    /* kirkas aqua korostuksiin */
+    --success: #22c55e;
+    --radius: 14px;
+    --max-width: 1100px;
+    --ff: 'Spectral', serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--ff);
+    background: linear-gradient(180deg, var(--bg) 0%, #08101a 100%);
+    color: #e6eef8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+    padding-bottom: 4rem;
+}
+
+/* container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Header / hero */
+.site-header {
+    padding: 1rem 0 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+}
+
+.header-inner {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.6px;
+}
+
+.hero-sub {
+    margin: 0.75rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* Nav */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.main-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 10px;
+}
+
+.main-nav a:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Cards */
+.cards-section {
+    padding: 2.2rem 0;
+}
+
+.cards-section h2 {
+    margin: 0 0 0.25rem 0;
+}
+
+.lead {
+    color: var(--muted);
+    margin-top: 0.25rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Card figure + image + caption for white-background GPUs */
+.card {
+    background: linear-gradient(180deg, var(--card), rgba(255, 255, 255, 0.02));
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 36px rgba(2, 6, 23, 0.75);
+}
+
+/* Figure and image */
+.card figure {
+    position: relative;
+    margin: 0;
+    min-height: 160px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.06), rgba(0, 212, 255, 0.03));
+}
+
+.card figure img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover; /* gpu showing thingys */
+    display: block;
+}
+
+/* Optional overlay for style */
+.card figure::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,23,36,0.6) 50%, rgba(15,23,36,0) 100%);
+    pointer-events: none;
+}
+
+/* Figcaption (text on image) */
+.card figure figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    color: #ffffff; /* kirkas valkoinen */
+    background: rgba(0, 0, 0, 0.7); /* tumma, läpinäkyvä */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    box-sizing: border-box;
+}
+
+/* Card body */
+.card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: auto;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.specs {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.price {
+    margin: 0.2rem 0 0;
+    font-size: 0.95rem;
+    color: aliceblue;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #eaf3ff;
+    background: transparent;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: #06111a;
+    border: none;
+    box-shadow: 0 6px 18px rgba(124, 92, 255, 0.18);
+}
+
+/* Forms */
+.contact-form {
+    max-width: 540px;
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+}
+
+.contact-form label {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.03);
+    color: inherit;
+    outline: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* Info section */
+.info-section {
+    padding: 1.6rem 0;
+    color: var(--muted);
+}
+
+.info-section h3 {
+    margin-top: 2.3rem;
+}
+
+/* Footer */
+.site-footer {
+    margin-top: 2.5rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+/* Responsive tweaks */
+@media (max-width:720px) {
+    .header-inner {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .card img {
+        height: 140px;
+    }
+
+    .site-title {
+        font-size: 1.25rem;
+    }
+}
